@@ -4,38 +4,74 @@
     <meta charset='utf-8' />
     <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
     <style>
-        *{
+        * {
             font-family: 'Spoqa Han Sans', sans-serif; 
         }
         
-        #header, #content {
-            display: flex;
-            flex-direction: row;
-            flex-wrap: nowrap;
-            justify-content: center;
-            align-items: center;
+        html {
+            font-size: 10px;
+        }
+        
+        table {
+            width: 100%;
+        }
+        
+        th {
+            text-align: left;
+            font-weight: 100;
+        }
+        
+        #header img {
+            max-width: 120px;
+        }
+        
+        #content {
+            font-weight: 100;
+            font-size: 30px;
+        }
+        
+        #reason {
+            font-size: 50px;
+        }
+        
+        #name {
+            font-size: 50px;
         }
         
         #footer {
             text-align: center;
         }
+        
     </style>
   </head>
   <body>
     <div id="header">
-        <%= image_tag "dimigo_logo.png" %>
-        <span>KDMHS<br>Outing Application System</span>
+        <table>
+            <tr>
+                <th><%= wicked_pdf_image_tag "dimigo_logo.png" %></th>
+                <td><span>KDMHS<br><strong>Outing Application System</strong></span></td>
+            </tr>
+        </table>
     </div>
     <hr>
     <div id="content">
-        <div class="person">
-            <%= @apply.user.no %><br>
-            <%= @apply.user.name %>
-        </div>
-      
-      <%= @apply.sch_start.strftime("%H") %><br>
-      <%= @apply.sch_end.strftime("%H") %>
-      <%= yield %>
+        <table>
+            <tr>
+                <th>
+                    <span id="no"><%= @apply.user.no %></span><br>
+                    <span id="name"><%= @apply.user.name %></span>
+                </th>
+            </tr>
+            <tr>
+                <td id="reason"><%= @apply.reason %></td>
+            </tr>
+            <tr>
+                <td><%= @apply.sch_start.strftime("%H") %></td>
+            </tr>
+            <tr>
+                <td><%= @apply.sch_end.strftime("%H") %></td>
+            </tr>
+        </table>
     </div>
     <hr>
     <div id="footer">
