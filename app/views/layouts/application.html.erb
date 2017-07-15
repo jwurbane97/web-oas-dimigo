@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <title>외출신청시스템 :: 한국디지털미디어고등학교</title>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="shortcut icon" href="<%= image_url 'favicon.ico' %>" />
+  <link href="https://cdn.rawgit.com/filipelinhares/ress/master/dist/ress.min.css">
+  <link rel="stylesheet" href="//cdn.rawgit.com/hiun/NanumSquare/master/nanumsquare.css">
+  <link rel="stylesheet" href="//unpkg.com/flatpickr/dist/flatpickr.min.css">
+  <link href="//raw.githubusercontent.com/chmln/flatpickr/master/dist/plugins/confirmDate/confirmDate.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.min.css" />
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+</head>
+<body>
+
+  <nav class="navbar nav-flex">
+    <div class="nav-logo nav-flex flex-valign-center">
+      <h1 class="nav-back-grey header">DIMIGO</h1>
+      <p class="header">Outing Application<br>System</p>
+    </div>
+    <ul class="menu">
+      <% if user_signed_in? and current_user.permission then %>
+        <% if request.path == requests_path then %>
+        <%= link_to "<li class='active'><i class='fa fa-pencil-square'></i> 승인현황</li>".html_safe, requests_path %>
+        <% else %>
+        <%= link_to "<li><i class='fa fa-pencil-square'></i> 승인현황</li>".html_safe, requests_path %>
+        <% end %>
+      <% elsif user_signed_in? and !current_user.permission then %>
+        <% if request.path == applies_path %>
+        <%= link_to "<li class='active'><i class='fa fa-pencil-square'></i> 신청현황</li>".html_safe, applies_path %>
+        <% else %>
+        <%= link_to "<li><i class='fa fa-pencil-square'></i> 신청현황</li>".html_safe, applies_path %>
+        <% end %>
+        <% if request.path == new_apply_path then %>
+        <%= link_to "<li class='active'>외출신청</li>".html_safe, new_apply_path %>
+        <% else %>
+        <%= link_to "<li>외출신청</li>".html_safe, new_apply_path %>
+        <% end %>
+      <% end %>
+    </ul>
+    <div class="service-name flex-right">
+      <% if user_signed_in? then %>
+      <div class="profile">
+        <a class="flex-link" href="<%= profile_path %>">
+          <img class="gravatar" src="https://www.gravatar.com/avatar/00000000000000000000000000000000" />&nbsp;&nbsp;
+          <span><%= current_user.name %></span>
+        </a>
+      </div>
+      <%= link_to "로그아웃", destroy_user_session_path, method: :delete, id: "sign_out" %>
+      <% else %>
+      <%= link_to "로그인", new_user_session_path, class: "" %>
+      <% end %>
+    </div>
+    <div class="mobile-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <main>
+    <% if user_signed_in? then %>
+    <div class="flex-side-main">
+      <aside>
+        <div class="personal_info">
+          <h3 class="id_num">3524</h3>
+          <h2><%= current_user.name %><% if current_user.permission then %> <small>교원</small> <% end %></h2>
+          <p>환영합니다</p>
+        </div>
+        <hr>
+        <div class="apply_info">
+          <% unless current_user.permission then %>
+          <div class="flex-end">
+            <h6>오늘의 외출</h6>
+            <h2>신청함</h2>
+          </div>
+          <% else %>
+          <div class="flex-end">
+            <h6>승인대기</h6>
+            <p><h2>6</h2>건</p>
+          </div>
+          <% end %>
+          <div class="flex-end">
+            <h6>승인</h6>
+            <p><h2>6</h2>건</p>
+          </div>
+          <div class="flex-end">
+            <h6>거절</h6>
+            <p><h2>1</h2>건</p>
+          </div>
+        </div>
+      </aside>
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
+  </main>
+  
+  <footer class="footer">
+    <div class="inner">
+      <div class="widget">
+        <h4>한국디지털미디어고등학교</h4>
+        <div class="divide20"></div>
+        <p>학교시설이용안내 | <a style="color: #999" href="https://www.dimigo.hs.kr/index.php?mid=teacher_stat">내선번호 안내</a> | <a style="color: #999" href="https://www.dimigo.hs.kr/index.php?mid=service_charter">교육행정서비스 표준헌장</a> | <a style="color: #999" href="https://www.dimigo.hs.kr/index.php?mid=privacy">개인정보처리방침</a> | <a style="color: #999" href="https://www.dimigo.hs.kr/index.php?mid=roadmap">찾아오시는 길</a></p>
+        <p>경기도 안산시 단원구 사세충열로 94 한국디지털미디어고등학교 / 교무실 : 031)363-7800 / 행정실 : 031)363-7873 / 팩스 : 031)402-8363</p>
+        <p>한국디지털미디어고등학교 외출신청시스템 디자인/개발 : <strong>전지원(12기)</strong></p>
+      </div>
+      <hr>
+      <p class="copyright pull-left">Copyright © 2017 Korea Digital Media High School. All Rights Reserved.</p>
+    </div>
+  </footer>
+  
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="//unpkg.com/flatpickr"></script>
+  <%= javascript_include_tag 'confirmDate', 'data-turbolinks-track' => false %>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.6/sweetalert2.min.js"></script>
+    
+  <% flash.each do |key, value| %>
+    <script>swal({title: '<%= key %>', html: '<%= value %><br><small>2초 후에 사라집니다.</small>', timer: 2000, type: <% if key == '경고' or key == 'alert' then %>'error'<% else %>'success'<% end %>});</script>
+  <% end %>
+  
+</body>
+</html>

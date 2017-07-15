@@ -1,0 +1,9 @@
+<section class="profile">
+    <div class="flex-profile flex-start section-title light-weight larger">
+        <img class="gravatar" src="https://www.gravatar.com/avatar/00000000000000000000000000000000" />&nbsp;&nbsp;<%= current_user.name %>&nbsp;<small><%= current_user.no %></small>
+    </div>
+    <div class="divider"></div>
+    <hr>
+    <div class="divider"></div>
+    <a class="btn-balloon btn-magenta" href="<%= edit_user_registration_path %>">패스워드 변경</a>
+</section>

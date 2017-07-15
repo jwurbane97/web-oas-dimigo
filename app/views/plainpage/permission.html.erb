@@ -1,0 +1,52 @@
+<section class="applies">
+    <div class="container">
+        <div class="header">
+            <h2 class="section-title text-center light-weight larger bottom-margin">승인요청현황</h2>
+        </div>
+        <hr class="small">
+        <div id="cards-container" class="flex-3">
+            <% if @requests.count == 0 %>
+            <div class="valign-center">
+                <h2>신청내역이 없네요!</h2>
+            </div>
+            <% end %>
+            <% @requests.each do |apply| %>
+            <div class="apply-card">
+                    <% if apply.accepted.nil? then %>
+                    <div class="status waiting">
+                        <i class="fa fa-clock-o fa-5x"></i><br>
+                        <strong class="larger light-weight">대기중</strong>
+                    </div>
+                    <% elsif apply.accepted then %>
+                    <div class="status approved">
+                        <i class="fa fa-check fa-5x"></i><br>
+                        <strong class="larger light-weight">승인</strong>
+                    </div>
+                    <% else %>
+                    <div class="status rejected">
+                        <i class="fa fa-times fa-5x"></i><br>
+                        <strong class="larger light-weight">거절</strong>
+                    </div>
+                    <% end %>
+                    <div id="header">
+                        <h4 class="title text-center"><%= apply.reason %>으로 인한 외출</h4>
+                    </div>
+                    <div class="body grey-text text-center">
+                        <strong class="larger"><%= apply.sch_start.strftime("%d") %>일</strong><br>
+                        <%= apply.sch_start.strftime("%k") %>시부터 <%= apply.sch_end.strftime("%k") %>시까지
+                        <hr>
+                        <span><%= apply.user.no %> | <%= apply.user.name %></span>
+                    </div>
+                    <div class="footer grey-text">
+                        <% if apply.accepted.nil? then %>
+                            <%= link_to "<i class='fa fa-check'></i> 승인".html_safe, apply_accept_path(apply.id), 'data-confirm': "승인하시겠습니까? 승인된 데이터는 변경할 수 없습니다.", class: "btn-half btn-gradient-warning", method: :post %>
+                            <%= link_to "<i class='fa fa-times'></i> 거절".html_safe, apply_reject_path(apply.id), 'data-method': "delete", 'data-confirm': "삭제하시겠습니까? 삭제된 데이터는 복구할 수 없습니다.", class: "btn-half btn-gradient-danger", method: :post %>
+                        <% elsif !apply.accepted then %>
+                            <%= link_to "재승인", apply_accept_path(apply.id), 'data-confirm': "승인하시겠습니까? 승인된 데이터는 변경할 수 없습니다.", class: "btn-full btn-gradient-warning", method: :post %>
+                        <% end %>
+                    </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</section>

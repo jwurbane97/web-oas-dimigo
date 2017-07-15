@@ -1,0 +1,32 @@
+<section class="container container-height-recover">
+  <div class="form">
+    <h2 class="section-title larger text-center light-weight">정보 변경</h2>
+    <hr class="small">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+    
+      <div class="field">
+        <%= f.email_field :email, autofocus: true %>
+      </div>
+    
+      <div class="field">
+        <%= f.password_field :password, autocomplete: "off" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> characters minimum</em>
+        <% end %>
+      </div>
+    
+      <div class="field">
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+    
+      <div class="field">
+        <%= f.password_field :current_password, autocomplete: "off" %>
+      </div>
+    
+      <div class="actions">
+        <%= f.submit "변경", class: "btn-balloon btn-magenta" %>
+      </div>
+    <% end %>
+  </div>
+</section>

@@ -1,0 +1,15 @@
+<section class="form">
+    <div class="container">
+        <h2 class="section-title text-center light-weight larger bottom-margin">외출상세</h2>
+        <p class="text-center"><strong>일시</strong> | <%= @apply.sch_start.strftime("%m월 %d일 %k시 %M분") %>부터 <%= @apply.sch_end.strftime("%m월 %d일 %k시 %M분") %>까지</p>
+        <p class="text-center"><strong>사유</strong> | <%= @apply.reason%></p>
+        <hr class="small">
+        <p class="text-center">
+            <span class="fa-stack fa-lg biggest">
+              <i class="fa fa-square fa-stack-2x"></i>
+              <i class="fa fa-hourglass-half fa-stack-1x fa-inverse fa-spin fa-fw"></i>
+            </span><br><br>
+            <span>승인을 기다리고 있습니다</span>
+        </p>
+    </div>
+</section>

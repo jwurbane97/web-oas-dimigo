@@ -1,0 +1,18 @@
+<%= form_for(@apply) do |f| %>
+<div class="flex-3">
+    <div class="data">
+        <header>외출 시작시간</header>
+        <input class="flatpickr flatpickr-input" type="text" placeholder="시작" name="apply[sch_start]" required>
+    </div>
+    <div class="data">
+        <header>외출 종료시간</header>
+       <input class="flatpickr flatpickr-input" type="text" placeholder="종료" name="apply[sch_end]" required> 
+    </div>
+    <div class="data">
+        <header>외출 신청사유</header>
+        <%= f.text_field :reason, placeholder: "간략히(예. 병원 / 학원)", maxlength: 10, required: true %>
+    </div>
+</div>
+<hr class="small">
+<%= f.submit "신청", class: "btn-balloon btn-magenta" %>
+<% end %>

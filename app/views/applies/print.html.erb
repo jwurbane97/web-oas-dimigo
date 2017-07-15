@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8' />
+    <link href='//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css' rel='stylesheet' type='text/css'>
+    <style>
+        *{
+            font-family: 'Spoqa Han Sans', sans-serif; 
+        }
+        
+        #header, #content {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        #footer {
+            text-align: center;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="header">
+        <%= image_tag "dimigo_logo.png" %>
+        <span>KDMHS<br>Outing Application System</span>
+    </div>
+    <hr>
+    <div id="content">
+        <div class="person">
+            <%= @apply.user.no %><br>
+            <%= @apply.user.name %>
+        </div>
+      
+      <%= @apply.sch_start.strftime("%H") %><br>
+      <%= @apply.sch_end.strftime("%H") %>
+      <%= yield %>
+    </div>
+    <hr>
+    <div id="footer">
+        <strong>반드시 외출시간을 준수하시기 바랍니다. 미준수시 향후 외출에 제한을 받으실 수 있습니다.</strong>
+    </div>
+  </body>
+</html>

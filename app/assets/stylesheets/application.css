@@ -1,0 +1,673 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+ 
+ @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSans-kr.css);
+ @import url('https://fonts.googleapis.com/css?family=Quicksand');
+ 
+ * { font-family: 'Quicksand', 'Spoqa Han Sans', sans-serif; }
+ 
+ ::selection {
+    background: #fc6767 !important;
+    color: #fff !important;
+    text-shadow: none !important;
+ }
+ 
+ html {
+  font-size: 18px;
+ }
+ 
+ body {
+  margin: 0;
+ }
+ 
+ a {
+  color: #444;
+  text-decoration: none;
+ }
+ 
+ a:hover {
+  cursor: pointer;
+ }
+ 
+ h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+ }
+ 
+ img {
+  user-drag: none; 
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+ }
+ 
+ /* Navbar */
+ .nav-flex {
+     display: flex;
+     flex-direction: row;
+ }
+ 
+ .navbar {
+     position: fixed !important;
+     width: 100%;
+     height: 100px;
+     left: 0;
+     top: 0;
+     padding: 0 1rem;
+     background: white;
+     color: #444;
+     z-index: 1001;
+     transition: .2s all ease;
+ }
+ 
+ .navbar::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100px;
+    content: '';
+    box-shadow: 0 1px 8px rgba(0,0,0,0.4);
+ }
+ 
+ .navbar .nav-logo {
+     width: calc(341px * 0.65);
+     max-width: calc(341px * 0.65);
+ }
+ 
+ .navbar .menu {
+  width: calc(100% - 341px * 1.5 - 6rem);
+  height: 95px;
+  margin: 0;
+  padding: 0 20px;
+ }
+ 
+ .navbar .menu li {
+  display: inline-block;
+  font-weight: 600;
+  list-style-type: none;
+  padding: 0 2rem;
+  transition: all .2s ease;
+ }
+ 
+ .navbar .menu a:hover li, .navbar .menu a li.active {
+  border-bottom: 5px solid #ff96ce;
+  color: #ff96ce;
+ }
+ 
+ .navbar .menu a li {
+  line-height: 95px;
+  height: inherit;
+ }
+ 
+ .navbar .service-name {
+     display: inline-block;
+     width: calc(341px * 0.85);
+     height: inherit;
+     padding: 0 2rem;
+     text-align: right;
+ }
+ 
+ .navbar .service-name .profile {
+  display: inline-block;
+  height: inherit;
+  padding: 0 .5rem;
+  transition: .2s all ease;
+ }
+ 
+ .navbar .service-name .profile a {
+  line-height: 100px;
+ }
+ 
+ .navbar .service-name .profile:hover {
+  background: #fc6767;
+ }
+ 
+ .navbar .service-name .profile:hover span {
+  color: white;
+ }
+ 
+ .navbar .service-name .profile a .gravatar {
+  max-width: 50px;
+ }
+ 
+ .gravatar {
+  border-radius: 50%;
+ }
+
+ .navbar .nav-logo h1 {
+     background: url('dimigo_logo_white.png');
+     background-size: cover;
+ }
+ 
+ .navbar.toggle .nav-logo h1 {
+     background: url('dimigo_logo.png');
+     background-size: cover;
+ }
+ 
+ .navbar .nav-logo h1 {
+     display: inline-block;
+     text-indent: -999px;
+     width: calc(341px * 0.1);
+     height: calc(51px * 0.65);
+     margin: 0;
+ }
+ 
+ .navbar .nav-logo p.header {
+  font-weight: 700;
+  margin: 0;
+  margin-left: 12px;
+ }
+ 
+ /* Main */
+ .navbar + main {
+     margin-top: 100px;
+ }
+ 
+ main {
+     position: relative;
+     min-height: calc(100vh - 100px);
+ }
+ 
+ section {
+  background: rgb(244, 244, 244);
+ }
+ 
+ section, footer {
+  padding: 2rem;
+ }
+ 
+ .apply-card #header .title {
+  font-size: 1.6rem;
+ }
+ 
+ .apply-card .footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+ }
+ 
+ .apply-card .footer .btn-half {
+    display: inline-block;
+    width: 50%;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem 0;
+    transition: .2s all ease;
+ }
+ 
+ .apply-card .footer .btn-full {
+  display: inline-block;
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
+  padding: 1rem 0;
+  transition: .2s all ease;
+ }
+ 
+ .btn-gradient-warning:hover {
+  background: #fc4a1a;
+  color: white;
+ }
+
+ .btn-gradient-warning {
+  color: #fc4a1a;
+  background: white;
+ }
+ 
+ .btn-gradient-danger:hover {
+  background: rgb(236, 88, 148);
+  color: white;
+ }
+
+ .btn-gradient-danger {
+  color: rgb(236, 88, 148);
+  background: white;
+ }
+ 
+ .session {
+  background: url('http://dimigo.hs.kr/layouts/dimigo_v2/images/sub.bg/05.jpg'); 
+ }
+ 
+ .session .valign-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 450px !important;
+  min-height: 450px;
+  background: white;
+  border-radius: 1.2rem;
+ }
+ 
+ .session form {
+  width: calc(100% - 2rem);
+  padding: 1rem;
+ }
+ 
+ .session form input:not(.btn-balloon) {
+  width: calc(100% - 2.5rem);
+  background: none;
+  border-radius: 1rem;
+  padding: .75rem 1.25rem;
+  margin-bottom: .5rem;
+  border: 2px solid grey;
+ }
+ 
+ .landing {
+  color: white;
+ }
+ 
+ .bottom-margin {
+  margin-bottom: .5rem;
+ }
+ 
+ footer {
+  font-family: 'Nanum Square';
+  background: white;
+  border-top: 2px solid #e2e2e2;
+ }
+ 
+ footer h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 30px;
+  text-transform: uppercase;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #333;
+  margin-bottom: 25px;
+  color: #000;
+  letter-spacing: 1px;
+ }
+ 
+ footer p {
+  font-size: 12px;
+  color: #999;
+ }
+ 
+ /* Elements */
+ 
+ .back-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+ }
+ 
+ .video-cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .8);
+    z-index: 0;
+ }
+ 
+ .apply-card {
+  position: relative;
+  display: inline-block;
+  min-height: 500px;
+  margin: .5rem 0;
+  color: lightgrey;
+  background: white;
+  transition: all .3s;
+ }
+ 
+ .apply-card:hover {
+   -webkit-box-shadow: 0 5px 15px 0 rgba(0,0,0,0.8);
+   box-shadow: 0 5px 15px 0 rgba(0,0,0,0.8);
+   -webkit-transform: translate(0, -4px);
+   transform: translate(0, -4px);
+ }
+ 
+ .apply-card .body {
+  padding: 1rem;
+ }
+ 
+ .data input {
+  min-width: calc(100% - 150px);
+  max-width: calc(100% - 100px);
+  border-radius: 2rem;
+  border: 2px solid white;
+  padding: 1rem 2rem;
+  background: none;
+  text-align: center;
+ }
+ 
+ .data input[placeholder] {
+  font-size: 1rem;
+  color: white;
+ }
+ 
+ .data > header {
+    font-size: 2rem;
+    padding-bottom: 1rem;
+ }
+ 
+ span.tag {
+  font-size: .65rem;
+  color: white;
+  padding: .35rem .45rem;
+  border-radius: 3rem;
+  border: none;
+ }
+ 
+ div.status {
+  color: white;
+  min-height: 150px;
+  max-height: 150px;
+  padding: 1rem;
+ }
+ 
+ div.status.waiting {
+  background: #1fa885; 
+ }
+ 
+ div.status.approved {
+  background: #0294d7;
+ }
+ 
+ div.status.rejected {
+  background: rgb(236, 88, 148);
+ }
+ 
+ .btn {
+    border: 2px solid grey;
+    color: grey;
+    padding: .4rem 1.2rem;
+    border-radius: 1rem;
+    font-size: .9rem;
+    transition: .2s all ease;
+    font-weight: 400;
+ }
+ 
+ .btn:hover {
+  color: white;
+  background: grey;
+ }
+ 
+ .btn-square {
+  border-radius: 0;
+ }
+ 
+ .btn-small {
+  font-size: .75em;
+ }
+ 
+ .btn-balloon {
+  background: none;
+  font-size: .9rem;
+  margin-top: 1rem;
+  border-radius: 0 1rem 1rem 1rem;
+  border: 2px solid grey;
+  padding: .5rem 2.5rem;
+  color: grey;
+  transition: .2s all ease;
+ }
+ 
+ .btn-balloon:hover {
+  color: white;
+  border-color: grey;
+  background: grey;
+ }
+ 
+ .btn-magenta {
+  color: rgb(234, 83, 143);
+  border-color: rgb(234, 83, 143);
+ }
+ 
+ .btn-magenta:hover {
+  color: white;
+  background: rgb(234, 83, 143);
+  border-color: rgb(234, 83, 143);
+ }
+ 
+ .btn-red {
+  color: red;
+  border-color: red;
+ }
+ 
+ .btn-red:hover {
+  color: white;
+  background: red;
+  border-color: red;
+ }
+ 
+ .btn-grass {
+  color: #1fa885;
+  border-color: #1fa885;
+ }
+ 
+ .btn-grass:hover {
+  color: white;
+  background: #1fa885;
+  border-color: #1fa885;
+ }
+ 
+ .btn-orange {
+  color: orange;
+  border-color: orange;
+ }
+ 
+ .btn-orange:hover {
+  color: white;
+  background: orange;
+  border-color: orange;
+ }
+ 
+ input[type='submit']:hover {
+  cursor: pointer;
+ }
+ 
+ hr.small {
+  margin: 2rem 20rem;
+ }
+ 
+ div.divider {
+  padding: 1rem 0;
+ }
+ 
+ /* Alignment */
+ 
+ section, .container-height-recover {
+     position: relative;
+     min-height: calc(100vh - 100px);
+ }
+ 
+ .text-center {
+  text-align: center;
+ }
+ 
+ .flex-valign-center {
+  align-items: center;
+ }
+ 
+ .valign-center {
+     position: absolute;
+     top: 50%;
+     left: 50%;
+     min-width: 60vw;
+     text-align: center;
+     transform: translate(-50%, -50%);
+ }
+ 
+ [class*='flex-']:not(.flex-side-main) {
+  display: flex;
+  flex-grow: 1;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+ }
+ 
+ .flex-3 .apply-card {
+  width: 28%;
+ }
+ 
+ .flex-3 .data {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100% / 3 - 20px);
+  min-height: 300px;
+  background: #ec008c;
+  color: white;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.4);
+  transition: .2s all ease;
+ }
+ 
+ .flex-3 .data:hover {
+  background: #fc6767;
+ }
+ 
+ .header {
+  display: inline;
+ }
+ 
+ .pull-right {
+  float: right;
+ }
+ 
+ .pull-right::after {
+  clear: both;
+ }
+ 
+ .flex-side-main {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+ }
+ 
+ .flex-side-main aside {
+  min-width: calc(341px * 0.65);
+  max-width: calc(341px * 0.65);
+  padding: 1rem calc(.5rem + 6px);
+  background: linear-gradient(260deg, #fc6767, #ec008c);
+  color: white;
+ }
+ 
+ .flex-side-main > .container {
+  width: calc(100% - 341px * 0.65);
+ }
+ 
+ .inner {
+  max-width: 1100px;
+  margin: 0 auto;
+ }
+ 
+ .flex-start {
+  justify-content: flex-start !important;
+ }
+ 
+ .flex-right a#sign_out {
+    display: inline-block;
+    line-height: 100px;
+    padding: 0 1rem;
+ }
+ 
+ /* Media */
+ @media screen and (max-width: 991px) {
+  .mobile-btn {
+    width: 20px;
+    height: 15px;
+    position: relative;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .5s ease-in-out;
+    transition: .5s ease-in-out;
+    cursor: pointer;
+  }
+  
+  .mobile-btn span {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background: #444;
+    border-radius: 3px;
+    opacity: 1;
+    left: 0;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: .25s ease-in-out;
+    transition: .25s ease-in-out;
+  }
+  
+  .flex-3 .apply-card {
+   width: 100%;
+  }
+  
+  .flex-3 {
+   flex-direction: column;
+  }
+  
+  .flex-3 .data {
+   width: 100%;
+   margin-bottom: 1rem;
+  }
+  
+  aside, .menu, .flex-right {
+   display: none !important;
+  }
+  
+  .flex-side-main > .container {
+   width: 100%;
+  }
+  
+ .applies .header .btn-square {
+     float: none;
+     text-align: center;
+     display: block;
+     margin-top: 2rem;
+  }
+  
+  hr.small {
+   margin: 2rem;
+  }
+ }
+ 
+   /* Text Style */
+   
+  .title {
+   margin: 1rem 0;
+  }
+  
+  .light-weight {
+   font-weight: 100;
+  }
+  
+  .larger {
+   font-size: 2.5rem;
+  }
+  
+  .biggest {
+   font-size: 10rem;
+  }
+  
+  .grey-text {
+   color: lightslategray;
+  }
