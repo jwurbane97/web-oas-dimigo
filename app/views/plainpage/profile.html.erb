@@ -5,5 +5,21 @@
     <div class="divider"></div>
     <hr>
     <div class="divider"></div>
+    <form class="prof-image" method="POST" action="">
+        <header class="section-title larger grey-text light-weight">프로필 이미지 변경</header>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col-md-3 text-center">
+                <label for="prof">프로필 미리보기</label><br><br>
+                <img class="gravatar" src="https://www.gravatar.com/avatar/00000000000000000000000000000000">
+            </div>
+            <div class="col-md-9">
+                <input type="file" name='prof'>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <input type="submit" class="btn-balloon btn-magenta">
+    </form>
+    <div class="divider"></div>
     <a class="btn-balloon btn-magenta" href="<%= edit_user_registration_path %>">패스워드 변경</a>
 </section>
